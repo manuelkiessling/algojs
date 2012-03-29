@@ -25,9 +25,8 @@ describe("insertEdge", function() {
     expect(graph.edges[1].to).toEqual(5);
     expect(graph.edges[1].next).toEqual(undefined);
     /**
-
-     [1]->5->||
-
+          Graph looks like
+          1 -> 5 ->
      */
   });
 
@@ -37,6 +36,10 @@ describe("insertEdge", function() {
     expect(graph.edges[1].to).toEqual(3);
     expect(graph.edges[1].next.to).toEqual(5);
     expect(graph.edges[1].next.next).toEqual(undefined);
+    /**
+          Graph looks like
+          1 -> 3 -> 5 ->
+     */
   });
 
   it("correctly inserts an edgeNode for another vertex", function() {
@@ -48,5 +51,10 @@ describe("insertEdge", function() {
     expect(graph.edges[1].next.next).toEqual(undefined);
     expect(graph.edges[2].to).toEqual(5);
     expect(graph.edges[2].next).toEqual(undefined);
+    /**
+          Graph looks like
+          1 -> 3 -> 5 ->
+          2 -> 5 ->
+     */
   });
 });
