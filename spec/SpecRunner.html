@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jasmine Test Runner for CafeGraph</title>
+
+    <!-- Jasmine -->
+    <link rel="stylesheet" type="text/css" href="../vendor/jasmine-1.1.0/jasmine.css"/>
+    <script type="text/javascript" src="../vendor/jasmine-1.1.0/jasmine.js"></script>
+    <script type="text/javascript" src="../vendor/jasmine-1.1.0/jasmine-html.js"></script>
+
+    <!-- Source Files -->
+    <script type="text/javascript" src="../lib/EdgeNode.js"></script>
+
+    <!-- Spec Files -->
+    <script type="text/javascript" src="./EdgeNode.spec.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+      jasmine.getEnv().execute();
+    </script>
+  </body>
+</html>
