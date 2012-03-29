@@ -1,5 +1,8 @@
 "use strict";
 
+var EdgeNode = require("../lib/EdgeNode");
+var insertEdge = require("../lib/insertEdge");
+
 var graph = {
   edges: []
 };
@@ -8,11 +11,6 @@ var resetGraph = function() {
   graph = {
     edges: []
   };
-};
-
-var EdgeNode = function(to, next) {
-  this.to = to;
-  this.next = next;
 };
 
 describe("insertEdge", function() {

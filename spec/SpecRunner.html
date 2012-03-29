@@ -8,21 +8,30 @@
     <script type="text/javascript" src="../vendor/jasmine-1.1.0/jasmine.js"></script>
     <script type="text/javascript" src="../vendor/jasmine-1.1.0/jasmine-html.js"></script>
 
-    <!-- Source Files -->
-    <script type="text/javascript" src="../lib/EdgeNode.js"></script>
-    <script type="text/javascript" src="../lib/insertEdge.js"></script>
-    <script type="text/javascript" src="../lib/printGraph.js"></script>
+    <!-- RequireJS -->
+    <script type="text/javascript" src="../vendor/require-1.0.7/require.js"></script>
 
-    <!-- Spec Files -->
-    <script type="text/javascript" src="./EdgeNode.spec.js"></script>
-    <script type="text/javascript" src="./insertEdge.spec.js"></script>
-    <script type="text/javascript" src="./printGraph.spec.js"></script>
   </head>
 
   <body>
     <script type="text/javascript">
-      jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-      jasmine.getEnv().execute();
+      require.config({
+        baseUrl: './'
+      });
+
+      require([
+        '../lib/EdgeNode',
+        '../spec/EdgeNode.spec',
+
+        '../lib/insertEdge',
+        '../spec/insertEdge.spec',
+
+        '../lib/printGraph',
+        '../spec/printGraph.spec'
+      ], function() {
+        jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+        jasmine.getEnv().execute();
+      });
     </script>
   </body>
 </html>

@@ -1,5 +1,7 @@
 "use strict";
 
+var EdgeNode = require("../lib/EdgeNode");
+
 describe("EdgeNode", function() {
   it("returns a new EdgeNode", function() {
     var next = new EdgeNode(2, null);

@@ -1,5 +1,9 @@
 "use strict";
 
+var EdgeNode = require("../lib/EdgeNode");
+var insertEdge = require("../lib/insertEdge");
+var printGraph = require("../lib/printGraph");
+
 var graph = {
   edges: []
 };
