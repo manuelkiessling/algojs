@@ -8,7 +8,7 @@ describe("calculatePosition", function() {
       width: 640,
       height: 500,
       rows: 10,
-      columns: 10
+      cols: 10
     };
     var position = calculatePosition(8, options);
     expect(position.x).toEqual(448);
@@ -20,7 +20,7 @@ describe("calculatePosition", function() {
       width: 640,
       height: 500,
       rows: 10,
-      columns: 10
+      cols: 10
     };
     var position = calculatePosition(10, options);
     expect(position.x).toEqual(576);
@@ -32,7 +32,7 @@ describe("calculatePosition", function() {
       width: 640,
       height: 500,
       rows: 10,
-      columns: 10
+      cols: 10
     };
     var position = calculatePosition(11, options);
     expect(position.x).toEqual(0);
@@ -44,7 +44,7 @@ describe("calculatePosition", function() {
       width: 640,
       height: 500,
       rows: 10,
-      columns: 10
+      cols: 10
     };
     var position = calculatePosition(100, options);
     expect(position.x).toEqual(576);
