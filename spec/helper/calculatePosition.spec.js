@@ -38,4 +38,16 @@ describe("calculatePosition", function() {
     expect(position.x).toEqual(0);
     expect(position.y).toEqual(50);
   });
+
+  it("places item 100 at 576,450", function() {
+    var options = {
+      width: 640,
+      height: 500,
+      rows: 10,
+      columns: 10
+    };
+    var position = calculatePosition(100, options);
+    expect(position.x).toEqual(576);
+    expect(position.y).toEqual(450);
+  });
 });
