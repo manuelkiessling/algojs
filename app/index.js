@@ -1,5 +1,8 @@
-define(['../lib/EdgeNode', '../lib/insertEdge', '../lib/drawer/canvas'],
-  function(EdgeNode, insertEdge, canvasDrawer) {
+define(['../lib/EdgeNode',
+        '../lib/insertEdge',
+        '../lib/drawer/canvas',
+        '../lib/traverse/bfs'],
+  function(EdgeNode, insertEdge, canvasDrawer, bfs) {
 
     var graph = {
       edges: []
@@ -22,5 +25,24 @@ define(['../lib/EdgeNode', '../lib/insertEdge', '../lib/drawer/canvas'],
       canvasDrawer.draw();
     }, 1000 / 60);
 
+    var callbacks = {
+      startedProcessingVertex: function(vertexNumber) {
+        canvasDrawer.setVertexStateProcessingStarted(vertexNumber);
+        canvasDrawer.draw();
+      },
+      finishedProcessingVertex: function(vertexNumber) {
+        canvasDrawer.setVertexStateProcessingFinished(vertexNumber);
+        canvasDrawer.draw();
+      },
+      discoveredVertex: function(vertexNumber) {
+        canvasDrawer.setVertexStateDiscovered(vertexNumber);
+        canvasDrawer.draw();
+      },
+      foundEdge: function(startVertexNumber, endVertexNumber) {
+        //
+      }
+    };
+
+    bfs(graph, 32, callbacks);
   }
 );
