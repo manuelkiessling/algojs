@@ -20,15 +20,9 @@
       });
 
       require([
-        '../lib/EdgeNode',
         '../spec/EdgeNode.spec',
-
-        '../lib/insertEdge',
         '../spec/insertEdge.spec',
-
-        '../lib/printGraph',
         '../spec/printGraph.spec',
-
         '../spec/helper/Queue.spec'
       ], function() {
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

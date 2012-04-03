@@ -1,29 +1,28 @@
 "use strict";
-
-var EdgeNode = require("../lib/EdgeNode");
-var insertEdge = require("../lib/insertEdge");
-var printGraph = require("../lib/printGraph");
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 var graph = {
   edges: []
 };
 
-var createGraph = function() {
-  insertEdge(graph, 1, 5, EdgeNode);
-  insertEdge(graph, 1, 3, EdgeNode);
-  insertEdge(graph, 2, 5, EdgeNode);
-};
+define(["../lib/EdgeNode", "../lib/insertEdge", "../lib/printGraph"], function(EdgeNode, insertEdge, printGraph) {
+  var createGraph = function() {
+    insertEdge(graph, 1, 5, EdgeNode);
+    insertEdge(graph, 1, 3, EdgeNode);
+    insertEdge(graph, 2, 5, EdgeNode);
+  };
 
-describe("printGraph", function() {
-  beforeEach(function() {
-    graph.edges = [];
-    createGraph();
-  });
+  describe("printGraph", function() {
+    beforeEach(function() {
+      graph.edges = [];
+      createGraph();
+    });
 
-  it("correctly prints the graph", function() {
-    var expectedOutput = "1 -> 3 -> 5 -> \n" +
-                         "2 -> 5 -> \n";
-    var actualOutput = printGraph(graph);
-    expect(actualOutput).toEqual(expectedOutput);
+    it("correctly prints the graph", function() {
+      var expectedOutput = "1 -> 3 -> 5 -> \n" +
+                           "2 -> 5 -> \n";
+      var actualOutput = printGraph(graph);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
   });
 });
