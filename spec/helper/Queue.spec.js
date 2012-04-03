@@ -41,5 +41,15 @@ define(["../../lib/helper/Queue"], function(Queue) {
       expect(expected).toEqual(undefined);
     });
 
+    it("correctly recognizes itself as empty", function() {
+      var queue = new Queue();
+      expect(queue.isEmpty()).toEqual(true);
+      queue.enqueue("a");
+      expect(queue.isEmpty()).toEqual(false);
+      queue.dequeue();
+      expect(queue.isEmpty()).toEqual(true);
+    });
+
+
   });
 });
