@@ -20,7 +20,9 @@ define(["../lib/EdgeNode", "../lib/insertEdge", "../lib/printGraph"], function(E
 
     it("correctly prints the graph", function() {
       var expectedOutput = "1 -> 3 -> 5 -> \n" +
-                           "2 -> 5 -> \n";
+                           "2 -> 5 -> \n" +
+                           "3 -> 1 -> \n" +
+                           "5 -> 2 -> 1 -> \n";
       var actualOutput = printGraph(graph);
       expect(actualOutput).toEqual(expectedOutput);
     });

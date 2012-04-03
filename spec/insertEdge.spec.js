@@ -17,13 +17,16 @@ define(["../lib/EdgeNode", "../lib/insertEdge"], function(EdgeNode, insertEdge) 
       resetGraph();
     });
 
-    it("inserts an egdeNode into the graph", function() {
+    it("inserts an egdeNode into the graph, in both directions", function() {
       insertEdge(graph, 1, 5, EdgeNode);
       expect(graph.edges[1].to).toEqual(5);
+      expect(graph.edges[5].to).toEqual(1);
       expect(graph.edges[1].next).toEqual(undefined);
+      expect(graph.edges[5].next).toEqual(undefined);
       /**
             Graph looks like
             1 -> 5 ->
+            5 -> 1 ->
        */
     });
 
@@ -36,6 +39,8 @@ define(["../lib/EdgeNode", "../lib/insertEdge"], function(EdgeNode, insertEdge) 
       /**
             Graph looks like
             1 -> 3 -> 5 ->
+            5 -> 1 ->
+            3 -> 1 ->
        */
     });
 
