@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Performance/Memory test page for Queue.js</title>
+    <script type="text/javascript" src="../../../vendor/require-1.0.7/require.js"></script>
+    <script type="text/javascript" src="./OtherQueue.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      require.config({
+        baseUrl: './'
+      });
+
+      require(['../../../lib/helper/Queue.js'], function(Queue) {
+        var queue = new Queue();
+        var start = new Date().getTime();
+        true; // for breakpoints
+        for (var i = 0; i < 10000000; i++) {
+          queue.enqueue(i.toString());
+        }
+        true; // for breakpoints
+        for (var i = 0; i < 10000000; i++) {
+          queue.dequeue();
+        }
+        true; // for breakpoints
+        var end = new Date().getTime();
+        var time = end - start;
+        window.alert(time);
+      });
+    </script>
+  </body>
+</html>
