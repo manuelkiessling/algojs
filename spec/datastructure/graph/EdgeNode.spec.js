@@ -1,7 +1,7 @@
 "use strict";
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-define(["../lib/EdgeNode"], function(EdgeNode) {
+define(["../../../lib/datastructure/graph/EdgeNode"], function(EdgeNode) {
   describe("EdgeNode", function() {
     it("returns a new EdgeNode", function() {
       var next = new EdgeNode(2, null);

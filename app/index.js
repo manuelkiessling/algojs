@@ -1,23 +1,21 @@
-define(['../lib/EdgeNode',
-        '../lib/insertEdge',
+define(['../lib/datastructure/graph/EdgeNode',
+        '../lib/datastructure/graph/Graph',
         '../lib/drawer/canvas',
         '../lib/traverse/bfs',
-        '../lib/helper/Queue'],
-  function(EdgeNode, insertEdge, canvasDrawer, bfs, Queue) {
+        '../lib/datastructure/Queue'],
+  function(EdgeNode, Graph, canvasDrawer, bfs, Queue) {
 
-    var graph = {
-      edges: []
-    };
+    var graph = new Graph();
 
-    insertEdge(graph, 32, 66, EdgeNode);
-    insertEdge(graph, 72, 66, EdgeNode);
-    insertEdge(graph, 66, 14, EdgeNode);
-    insertEdge(graph, 14, 32, EdgeNode);
-    insertEdge(graph, 69, 66, EdgeNode);
-    insertEdge(graph, 88, 69, EdgeNode);
-    insertEdge(graph, 100, 88, EdgeNode);
-    insertEdge(graph, 28, 69, EdgeNode);
-    insertEdge(graph, 26, 14, EdgeNode);
+    graph.insertEdge(32, 66, EdgeNode);
+    graph.insertEdge(72, 66, EdgeNode);
+    graph.insertEdge(66, 14, EdgeNode);
+    graph.insertEdge(14, 32, EdgeNode);
+    graph.insertEdge(69, 66, EdgeNode);
+    graph.insertEdge(88, 69, EdgeNode);
+    graph.insertEdge(100, 88, EdgeNode);
+    graph.insertEdge(28, 69, EdgeNode);
+    graph.insertEdge(26, 14, EdgeNode);
 
     canvasDrawer.init(document.getElementById('canvas'), 10, 10, graph);
 
