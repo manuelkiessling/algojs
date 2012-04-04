@@ -1,8 +1,9 @@
 define(['../lib/EdgeNode',
         '../lib/insertEdge',
         '../lib/drawer/canvas',
-        '../lib/traverse/bfs'],
-  function(EdgeNode, insertEdge, canvasDrawer, bfs) {
+        '../lib/traverse/bfs',
+        '../lib/helper/Queue'],
+  function(EdgeNode, insertEdge, canvasDrawer, bfs, Queue) {
 
     var graph = {
       edges: []
@@ -20,23 +21,28 @@ define(['../lib/EdgeNode',
 
     canvasDrawer.init(document.getElementById('canvas'), 10, 10, graph);
 
-    var loop = setInterval(function() {
+    var canvasLoop = setInterval(function() {
       canvasDrawer.update();
       canvasDrawer.draw();
     }, 1000 / 60);
 
+    var eventQueue = new Queue();
+
     var callbacks = {
       startedProcessingVertex: function(vertexNumber) {
-        canvasDrawer.setVertexStateProcessingStarted(vertexNumber);
-        canvasDrawer.draw();
+        eventQueue.enqueue(function() {
+          canvasDrawer.setVertexStateProcessingStarted(vertexNumber);
+        });
       },
       finishedProcessingVertex: function(vertexNumber) {
-        canvasDrawer.setVertexStateProcessingFinished(vertexNumber);
-        canvasDrawer.draw();
+        eventQueue.enqueue(function() {
+          canvasDrawer.setVertexStateProcessingFinished(vertexNumber);
+        });
       },
       discoveredVertex: function(vertexNumber) {
-        canvasDrawer.setVertexStateDiscovered(vertexNumber);
-        canvasDrawer.draw();
+        eventQueue.enqueue(function() {
+          canvasDrawer.setVertexStateDiscovered(vertexNumber);
+        });
       },
       foundEdge: function(startVertexNumber, endVertexNumber) {
         //
@@ -44,5 +50,12 @@ define(['../lib/EdgeNode',
     };
 
     bfs(graph, 32, callbacks);
+
+    var eventLoop = setInterval(function() {
+      var event = eventQueue.dequeue();
+      if (typeof event === 'function') {
+        event();
+      }
+    }, 500);
   }
 );
