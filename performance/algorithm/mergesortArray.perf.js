@@ -13,7 +13,7 @@ var compareNumbers = function(a, b) {
   }
 };
 
-define(["../../../lib/datastructure/Queue", "../../../lib/algorithm/mergesortQueue"], function(Queue, mergesort) {
+define(["../../lib/algorithm/mergesortArray"], function(mergesort) {
   var compareNumbers = function(a, b) {
     if (a < b) {
       return -1;
@@ -27,9 +27,9 @@ define(["../../../lib/datastructure/Queue", "../../../lib/algorithm/mergesortQue
   };
 
   var numItems = 1000000;
-  var items = new Queue();
+  var items = [];
   for (var i = 0; i < numItems; i++) {
-    items.enqueue(Math.floor(Math.random() * numItems));
+    items.push(Math.floor(Math.random() * numItems));
   }
 
   var start = new Date().getTime();
