@@ -1,4 +1,4 @@
-var numItems = 10000000;
+var numItems = 1000000;
 var items = [];
 for (var i = 0; i < numItems; i++) {
   items.push(Math.floor(Math.random() * numItems));

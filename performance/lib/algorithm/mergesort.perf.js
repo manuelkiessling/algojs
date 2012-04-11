@@ -26,7 +26,7 @@ define(["../../../lib/datastructure/Queue", "../../../lib/algorithm/mergesort"],
     }
   };
 
-  var numItems = 10000000;
+  var numItems = 1000000;
   var items = new Queue();
   for (var i = 0; i < numItems; i++) {
     items.enqueue(Math.floor(Math.random() * numItems));
