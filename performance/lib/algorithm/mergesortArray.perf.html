@@ -2,42 +2,16 @@
 <html>
   <head>
     <title>Performance/Memory test page for mergesortArray.js</title>
-    <script type="text/javascript" src="../../../vendor/require-1.0.7/require.js"></script>
+    <script type="text/javascript">
+      console = {
+        log: function(message) {
+          document.writeln(message + "<br/>");
+        }
+      };
+    </script>
+    <script type="text/javascript" data-main="./mergesortArray.perf" src="../../../vendor/require-1.0.7/require.js"></script>
   </head>
 
   <body>
-    <script type="text/javascript">
-      require.config({
-        baseUrl: './'
-      });
-
-      require(['../../../lib/algorithm/mergesortArray.js'], function(mergesort) {
-        var compareNumbers = function(a, b) {
-          if (a < b) {
-            return -1;
-          }
-          if (a === b) {
-            return 0;
-          }
-          if (a > b) {
-            return 1;
-          }
-        };
-
-        var numItems = 1000000;
-        var items = [];
-        for (var i = 0; i < numItems; i++) {
-          items.push(Math.floor(Math.random() * numItems));
-        }
-
-        var start = new Date().getTime();
-        var sorted = mergesort(items, compareNumbers);
-        var end = new Date().getTime();
-        var time = end - start;
-        console.log(numItems + " items sorted");
-        console.log(time / 1000 + " seconds");
-        console.log((numItems / time) * 1000 + " items / second");
-      });
-    </script>
   </body>
 </html>
