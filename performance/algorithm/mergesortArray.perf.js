@@ -1,29 +1,9 @@
 "use strict";
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-var compareNumbers = function(a, b) {
-  if (a < b) {
-    return -1;
-  }
-  if (a === b) {
-    return 0;
-  }
-  if (a > b) {
-    return 1;
-  }
-};
-
 define(["../../lib/algorithm/mergesortArray"], function(mergesort) {
   var compareNumbers = function(a, b) {
-    if (a < b) {
-      return -1;
-    }
-    if (a === b) {
-      return 0;
-    }
-    if (a > b) {
-      return 1;
-    }
+    return a - b;
   };
 
   var numItems = 1000000;

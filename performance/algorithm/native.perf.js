@@ -1,3 +1,7 @@
+var compareNumbers = function(a, b) {
+  return a - b;
+};
+
 var numItems = 1000000;
 var items = [];
 for (var i = 0; i < numItems; i++) {
@@ -5,7 +9,7 @@ for (var i = 0; i < numItems; i++) {
 }
 
 var start = new Date().getTime();
-items.sort();
+items.sort(compareNumbers);
 var end = new Date().getTime();
 var time = end - start;
 console.log(numItems + " items sorted");
