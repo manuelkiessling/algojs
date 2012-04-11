@@ -13,7 +13,7 @@ var compareNumbers = function(a, b) {
   }
 };
 
-define(["../../lib/datastructure/Queue", "../../lib/algorithm/mergesort"], function(Queue, mergesort) {
+define(["../../lib/datastructure/Queue", "../../lib/algorithm/mergesortQueue"], function(Queue, mergesort) {
   describe("mergesort", function() {
     it("correctly sorts", function() {
       var unsorted = new Queue();
