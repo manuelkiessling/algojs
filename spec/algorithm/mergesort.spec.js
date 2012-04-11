@@ -1,41 +1,36 @@
 "use strict";
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-var compareStrings = function(a, b) {
-  var aString = a.join("");
-  var bString = b.join("");
-  if (aString.charCodeAt(0) < bString.charCodeAt(0)) {
-    return -1;
-  }
-  if (aString.charCodeAt(0) === bString.charCodeAt(0)) {
-    return 0;
-  }
-  if (aString.charCodeAt(0) > bString.charCodeAt(0)) {
-    return 1;
-  }
-};
-
 var compareNumbers = function(a, b) {
-  var aNumber = a[0];
-  var bNumber = b[0];
-  if (aNumber < bNumber) {
+  if (a < b) {
     return -1;
   }
-  if (aNumber === bNumber) {
+  if (a === b) {
     return 0;
   }
-  if (aNumber > bNumber) {
+  if (a > b) {
     return 1;
   }
 };
 
-define(["../../lib/algorithm/mergesort"], function(mergesort) {
+define(["../../lib/datastructure/Queue", "../../lib/algorithm/mergesort"], function(Queue, mergesort) {
   describe("mergesort", function() {
-    it("correctly sorts a string of characters", function() {
-      expect(mergesort("mergesort".split(""), compareStrings)).toEqual("eegmorrst".split(""));
-    });
-    it("correctly sorts a list of numbers", function() {
-      expect(mergesort([3, 4, 5, 7, 8, 9, 9, 0, 2, 3, 4, 1], compareNumbers)).toEqual([0, 1, 2, 3, 3, 4, 4, 5, 7, 8, 9, 9]);
+    it("correctly sorts", function() {
+      var unsorted = new Queue();
+      unsorted.enqueue(4);
+      unsorted.enqueue(9);
+      unsorted.enqueue(7);
+      unsorted.enqueue(8);
+      unsorted.enqueue(1);
+      unsorted.enqueue(9);
+
+      var sorted = mergesort(unsorted, compareNumbers);
+      var sortedString = "";
+      while (!sorted.isEmpty()) {
+        sortedString = sortedString + "" + sorted.dequeue();
+      }
+
+      expect(sortedString).toEqual("147899");
     });
   });
 });

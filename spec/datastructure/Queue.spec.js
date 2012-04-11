@@ -50,6 +50,32 @@ define(["../../lib/datastructure/Queue"], function(Queue) {
       expect(queue.isEmpty()).toEqual(true);
     });
 
+    it("reports the correct length", function() {
+      var queue = new Queue();
+      expect(queue.length).toEqual(0);
+      queue.enqueue("a");
+      expect(queue.length).toEqual(1);
+      queue.dequeue();
+      expect(queue.length).toEqual(0);
+      queue.enqueue("a");
+      queue.enqueue("b");
+      queue.enqueue("c");
+      expect(queue.length).toEqual(3);
+      queue.dequeue();
+      expect(queue.length).toEqual(2);
+    });
+
+    it("returns the item at the queried position", function() {
+      var queue = new Queue();
+      expect(queue.itemAt(0)).toEqual(undefined);
+      queue.enqueue("a");
+      queue.enqueue("b");
+      queue.enqueue("c");
+      expect(queue.itemAt(0).value).toEqual("a");
+      expect(queue.itemAt(1).value).toEqual("b");
+      expect(queue.itemAt(2).value).toEqual("c");
+      expect(queue.itemAt(4)).toEqual(undefined);
+    });
 
   });
 });
